@@ -1,0 +1,53 @@
+<div>
+  <div class="form-group">
+    <label>Title:</label>
+    <input required class="form-control" type="text" [(ngModel)]="speech.title">
+  </div>
+
+  <div class="form-group">
+    <label>Content:</label>
+    <textarea class="form-control" rows="10" [(ngModel)]="speech.content"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label>Author:</label>
+    <input type="text"
+           class="form-control"
+           [(ngModel)]="speech.author"
+    >
+  </div>
+
+  <div class="form-group">
+    <label>Keywords:</label>
+    <input type="text"
+           class="form-control"
+           [ngModel]="speech.tags | transformTags"
+           (ngModelChange)="transformTagsToArray($event)"
+    >
+    <p class="help-block"> Divide keywords via comma.</p>
+  </div>
+
+  <div class="form-group">
+    <label>Date:</label>
+    <input type="text" readonly bsDatepicker class="form-control" [(ngModel)]="speech.created">
+  </div>
+
+  <div class="form-group">
+    <label>Shared with:</label>
+    <div *ngIf="speech.users.length" class="assigned_users">
+      <div class="label label-success" *ngFor="let user of speech.users">{{user}} <span (click)="unassign(user)">&times;</span></div>
+    </div>
+
+    <input type="text"
+           #typeahead
+           [ngModel]=""
+           [typeahead]="users | filterUsers:speech.users"
+           [typeaheadOptionField]="'email'"
+           [typeaheadScrollable]="true"
+           [typeaheadOptionsInScrollableView]="5"
+           (typeaheadOnSelect)="updateUsers($event); typeahead.value = ''"
+           class="form-control"
+    >
+    <p class="help-block">Start typing user email</p>
+  </div>
+</div>

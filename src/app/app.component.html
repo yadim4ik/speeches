@@ -1,0 +1,27 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" (click)="isCollapsed = !isCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse" [collapse]="isCollapsed">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true, links: ['/speech/:id']}" >
+          <a [routerLink]="['/']">My speeches</a>
+        </li>
+        <li routerLinkActive="active"><a [routerLink]="['/', 'new']">New speech</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['/', 'search']">Search Speech</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

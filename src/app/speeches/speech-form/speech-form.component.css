@@ -1,0 +1,21 @@
+textarea {
+  resize: vertical;
+}
+
+.assigned_users {
+  margin-bottom: 10px;
+}
+
+.assigned_users .label {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0 10px 5px 0;
+}
+
+.assigned_users .label span {
+  font-size: 16px;
+  color: #d9534f;
+  cursor: pointer;
+  margin-left: 5px;
+}

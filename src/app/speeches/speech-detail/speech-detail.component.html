@@ -1,0 +1,15 @@
+<div *ngIf="speech" class="row">
+  <div class="col-md-4 hidden-sm hidden-xs">
+    <app-speeches></app-speeches>
+  </div>
+
+  <div class="col-md-8">
+    <app-speech-form [speech]="speech"></app-speech-form>
+
+    <alert *ngIf="showAlert" dismissOnTimeout="2000" type="success" dismissible="true" (onClosed)="showAlert = false">Saved</alert>
+
+    <button type="button" class="btn btn-success" (click)="saveSpeech()">Save</button>
+    <button type="button" class="btn btn-danger" (click)="deleteSpeech()">Delete</button>
+  </div>
+</div>
+
